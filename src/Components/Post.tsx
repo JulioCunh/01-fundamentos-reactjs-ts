@@ -6,17 +6,17 @@ import { Avatar } from './Avatar';
 import { ChangeEvent, FormEvent, useState, InvalidEvent } from 'react';
 
 interface Author {
-  id: string;
+  name: string;
   role: string;
   avatarUrl: string;
 }
 
-interface Content {
+export interface Content {
   type: 'paragraph' | 'link';
   content: string;
 }
 
-interface PostProps {
+export interface PostProps {
   author: Author;
   publishedAt: Date;
   content: Content[];
@@ -52,7 +52,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
     setNewCommentText(event.target.value);
   }
 
-  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement) {
+  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('Esse campo é obrigatório');
   }
 
